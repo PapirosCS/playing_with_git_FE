@@ -22,6 +22,13 @@ function setup() {
     loginScreen.setup();
     inGameScreen.setup();
 
+    window.onresize = function() {
+        // assigns new values for width and height variables
+        w = window.innerWidth;
+        h = window.innerHeight;
+        resizeCanvas(w, h);
+    }
+
     // Debug mode is only for development
     DEBUG_MODE = true;
 }
@@ -53,9 +60,3 @@ function keyPressed() {
     }
 }
 
-window.onresize = function() {
-    // assigns new values for width and height variables
-    w = window.innerWidth;
-    h = window.innerHeight;
-    resizeCanvas(w, h);
-}
