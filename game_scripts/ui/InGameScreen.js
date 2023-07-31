@@ -1,31 +1,35 @@
-function InGameScreen(loggedUser, level) {
-    // Current user, must be of type User
-    this.loggedUser = loggedUser;
-    // Current level, must be of type Level
-    this.level = level;
+class InGameScreen {
 
-    // UI Components
-    let backgroundImage;
-    let promptInput;
+    constructor(loggedUser, level){
+        // Current user, must be of type User
+        this.loggedUser = loggedUser;
+        // Current level, must be of type Level
+        this.level = level;
 
-    this.preload = function() {
-        backgroundImage = loadImage("../images/ingame_background.png");
+        // UI Components
+        this.backgroundImage;
+        this.promptInput;
     }
 
-    this.setup = function() {
-        promptInput = createInput("");
+
+    preload() {
+        this.backgroundImage = loadImage("images/ingame_background.png");
     }
 
-    this.draw = function() {
+    setup() {
+        this.promptInput = createInput("");
+    }
+
+    draw() {
         push();
         // Background rounded rectangle
         translate(120, 60);
-        backgroundImage.resize(width * 0.8, height * 0.8);
-        image(backgroundImage, 0, 0);
+        this.backgroundImage.resize(width * 0.8, height * 0.8);
+        image(this.backgroundImage, 0, 0);
 
         // Background fixed rectangle
-        const backInterfaceWidth = backgroundImage.width - 80;
-        const backInterfaceHeight = backgroundImage.height - 80;
+        const backInterfaceWidth = this.backgroundImage.width - 80;
+        const backInterfaceHeight = this.backgroundImage.height - 80;
         translate(20, 20);
         fill("#CDE7E5");
         rect(20, 20, backInterfaceWidth, backInterfaceHeight, 20);
@@ -57,7 +61,7 @@ function InGameScreen(loggedUser, level) {
         if(level) {
             switch(level.getCurrentState().displayPrompt) {
                 case true:
-                    promptInput.position(0, 20 +  backInterfaceHeight * 3.8 / 6);
+                this.promptInput.position(0, 20 +  backInterfaceHeight * 3.8 / 6);
                 case false:
                     // TODO add button
             }
@@ -65,11 +69,11 @@ function InGameScreen(loggedUser, level) {
         pop();
     }
 
-    this.enableControls = function() {
-        promptInput.show();
+    enableControls() {
+    this.promptInput.show();
     }
 
-    this.destroyUI = function() {
-        promptInput.hide();
+    destroyUI() {
+    this.promptInput.hide();
     }
 }
