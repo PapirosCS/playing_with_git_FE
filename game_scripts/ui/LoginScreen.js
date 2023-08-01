@@ -43,6 +43,28 @@ class LoginScreen {
         this.emailInput.position(width / 2 - (this.emailInput.width/2), boxY + rowHeight * 8);
         text(" Password:", width / 2 - (this.passwordInput.width/2), boxY + rowHeight * 10 );
         this.passwordInput.position(width / 2 - (this.passwordInput.width/2), boxY + rowHeight * 10);
+        const loginButton = new Button((width/2) - 150, 
+                                        boxY + rowHeight * 12, 
+                                        300,
+                                        22,
+                                        10,
+                                        10,
+                                        10,
+                                        10,
+                                        "Login",
+                                        color(0, 255, 0));
+        loginButton.draw();
+        const registerButton = new Button((width/2) - 150, 
+                                        boxY + rowHeight * 14, 
+                                        300,
+                                        22,
+                                        10,
+                                        10,
+                                        10,
+                                        10,
+                                        "Create a new account",
+                                        color(255, 0, 0));
+        registerButton.draw();
     }
 
     enableControls() {

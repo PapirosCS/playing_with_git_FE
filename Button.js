@@ -1,5 +1,5 @@
 class Button {
-    constructor(x, y, w, h, tl, tr, br, bl, text, r, g, b) {
+    constructor(x, y, w, h, tl, tr, br, bl, text, colour    ) {
 
         //  x-coordinate of the rectangle.
         this.posX = x;
@@ -29,11 +29,11 @@ class Button {
         this.text = text;
 
         // Color of the button
-        this.Color = color(r, g, b);
+        this.colour = colour;
     }
 
     draw() {
-        fill(this.Color);
+        fill(this.colour);
         rect(this.posX, this.posY, this.w, this.h, this.tl, this.tr, this.br, this.bl);
         textAlign(CENTER, CENTER);
         textSize(20);
