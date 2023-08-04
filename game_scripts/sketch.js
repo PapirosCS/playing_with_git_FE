@@ -60,3 +60,17 @@ function keyPressed() {
     }
 }
 
+function mousePressed(){
+    let buttonClicked;
+    if (gameController.getCurrentState() == "LOGIN_SCREEN"){
+        buttonClicked = loginScreen.buttonCheck(mouseX, mouseY);
+    }
+    if (buttonClicked == "login"){
+        gameController.goToInGameScreen(loginScreen, inGameScreen);
+    }
+    else if (buttonClicked == "register"){
+        console.log("Register screen")
+        // toDo create a register page
+    }
+}
+

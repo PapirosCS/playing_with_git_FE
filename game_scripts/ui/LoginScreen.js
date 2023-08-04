@@ -6,6 +6,8 @@ class LoginScreen {
         this.box2;
         this.emailInput;
         this.passwordInput;
+        this.loginButton = new Button();
+        this.registerButton = new Button();
     }
 
     preload() {
@@ -43,7 +45,7 @@ class LoginScreen {
         this.emailInput.position(width / 2 - (this.emailInput.width/2), boxY + rowHeight * 8);
         text(" Password:", width / 2 - (this.passwordInput.width/2), boxY + rowHeight * 10 );
         this.passwordInput.position(width / 2 - (this.passwordInput.width/2), boxY + rowHeight * 10);
-        const loginButton = new Button((width/2) - 150, 
+        this.loginButton.assign((width/2) - 150, 
                                         boxY + rowHeight * 12, 
                                         300,
                                         22,
@@ -53,8 +55,8 @@ class LoginScreen {
                                         10,
                                         "Login",
                                         color(0, 255, 0));
-        loginButton.draw();
-        const registerButton = new Button((width/2) - 150, 
+        this.loginButton.draw();
+        this.registerButton.assign((width/2) - 150, 
                                         boxY + rowHeight * 14, 
                                         300,
                                         22,
@@ -64,7 +66,19 @@ class LoginScreen {
                                         10,
                                         "Create a new account",
                                         color(255, 0, 0));
-        registerButton.draw();
+        this.registerButton.draw();
+    }
+
+    buttonCheck(mouseX, mouseY){
+        if(mouseX > this.loginButton.posX && mouseX < this.loginButton.posX + this.loginButton.w &&
+            mouseY > this.loginButton.posY && mouseY < this.loginButton.posY + this.loginButton.h){
+                return "login";
+        }
+        if(mouseX > this.registerButton.posX && mouseX < this.registerButton.posX + this.registerButton.w &&
+            mouseY > this.registerButton.posY && mouseY < this.registerButton.posY + this.registerButton.h){
+                return "register";
+        }
+        return null;
     }
 
     enableControls() {
