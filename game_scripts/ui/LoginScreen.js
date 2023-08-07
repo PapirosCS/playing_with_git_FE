@@ -18,7 +18,6 @@ class LoginScreen {
     setup() {
         this.emailInput = createInput("");
         this.emailInput.addClass("input", "email");
-        this.emailInput.center();
         this.emailInput.size(300, 22);
         this.passwordInput = createInput("", "password");
         this.passwordInput.addClass("input");

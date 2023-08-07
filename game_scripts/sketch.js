@@ -3,16 +3,19 @@ let h = window.innerHeight;
 let gameController;
 let loginScreen;
 let inGameScreen;
+let registerScreen;
 let DEBUG_MODE;
 
 function preload(){
     gameController = new GameController();
     loginScreen = new LoginScreen(gameController);
     inGameScreen = new InGameScreen(null, null);
+    registerScreen = new RegisterScreen();
 
     // Preload Assets
     loginScreen.preload();
     inGameScreen.preload();
+    registerScreen.preload();
 }
 
 function setup() {
@@ -21,6 +24,8 @@ function setup() {
     // Setup Elements
     loginScreen.setup();
     inGameScreen.setup();
+    registerScreen.setup();
+
 
     window.onresize = function() {
         // assigns new values for width and height variables
@@ -45,6 +50,9 @@ function draw() {
         case "IN_GAME":
             inGameScreen.draw();
             break;
+        case "REGISTER_SCREEN":
+            registerScreen.draw();
+            break;
     }
 }
 
@@ -61,16 +69,24 @@ function keyPressed() {
 }
 
 function mousePressed(){
-    let buttonClicked;
     if (gameController.getCurrentState() == "LOGIN_SCREEN"){
-        buttonClicked = loginScreen.buttonCheck(mouseX, mouseY);
+        const buttonClicked = loginScreen.buttonCheck(mouseX, mouseY);
+        if (buttonClicked == "login"){
+            gameController.goToInGameScreen(loginScreen, inGameScreen);
+        }
+        else if (buttonClicked == "register"){
+            gameController.goToRegisterScreen(loginScreen, registerScreen);
+            // toDo create a register page
+        }
     }
-    if (buttonClicked == "login"){
-        gameController.goToInGameScreen(loginScreen, inGameScreen);
-    }
-    else if (buttonClicked == "register"){
-        console.log("Register screen")
-        // toDo create a register page
+    if (gameController.getCurrentState() == "REGISTER_SCREEN"){
+        const buttonClicked = registerScreen.buttonCheck(mouseX, mouseY);
+        if (buttonClicked == "register"){
+            // todo verify information and add to database
+
+            gameController.goToLoginScreen(inGameScreen, loginScreen);
+        }
+        
     }
 }
 
