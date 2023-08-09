@@ -24,7 +24,7 @@ function setup() {
     // Setup Elements
     loginScreen.setup();
     inGameScreen.setup();
-    registerScreen.setup();
+    
 
 
     window.onresize = function() {
@@ -58,7 +58,6 @@ function draw() {
 
 function keyPressed() {
     // Keys for changing game states while in debug mode
-
     if (!DEBUG_MODE) { return; }
     if (keyCode == LEFT_ARROW) {
         gameController.goToInGameScreen(loginScreen, inGameScreen);
@@ -71,22 +70,25 @@ function keyPressed() {
 function mousePressed(){
     if (gameController.getCurrentState() == "LOGIN_SCREEN"){
         const buttonClicked = loginScreen.buttonCheck(mouseX, mouseY);
-        if (buttonClicked == "login"){
-            gameController.goToInGameScreen(loginScreen, inGameScreen);
+        if (buttonClicked){
+            if (buttonClicked.type == "login"){
+                gameController.goToInGameScreen(loginScreen, inGameScreen);
+            }
+            else if (buttonClicked.type == "register"){
+                registerScreen.setup();
+                gameController.goToRegisterScreen(loginScreen, registerScreen);
+            }
         }
-        else if (buttonClicked == "register"){
-            gameController.goToRegisterScreen(loginScreen, registerScreen);
-            // toDo create a register page
-        }
+
     }
     if (gameController.getCurrentState() == "REGISTER_SCREEN"){
         const buttonClicked = registerScreen.buttonCheck(mouseX, mouseY);
-        if (buttonClicked == "register"){
-            // todo verify information and add to database
-
-            gameController.goToLoginScreen(inGameScreen, loginScreen);
+        if (buttonClicked){
+            if (buttonClicked.type == "register"){
+                // todo verify information and add to database
+                gameController.goToLoginScreen(registerScreen, loginScreen);
+            }
         }
-        
     }
 }
 
