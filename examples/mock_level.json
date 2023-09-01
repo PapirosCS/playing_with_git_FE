@@ -1,0 +1,42 @@
+{
+  "index": "1",
+  "name": "Tutorial",
+  "stages": [
+    {
+      "displayMessage": "Welcome to Playing with Git!",
+      "displayPrompt": false,
+      "imageFilename": "",
+      "promptSolution": ""
+    },
+    {
+      "displayMessage": "Please enter the command 'git help'",
+      "displayPrompt": true,
+      "imageFilename": "",
+      "promptSolution": "git help"
+    },
+    {
+      "displayMessage": "Great! Now please make a commit with a comment 'hello world' (Use single quotation marks)",
+      "displayPrompt": true,
+      "imageFilename": "",
+      "promptSolution": "git commit -m 'hello world'"
+    },
+    {
+      "displayMessage": "This is a stage without prompt, just click 'Next'",
+      "displayPrompt": false,
+      "imageFilename": "",
+      "promptSolution": ""
+    },
+    {
+      "displayMessage": "End this level by pushing to the remote repository",
+      "displayPrompt": true,
+      "imageFilename": "",
+      "promptSolution": "git push"
+    },
+    {
+      "displayMessage": "You completed the level. Click 'Next' to continue",
+      "displayPrompt": false,
+      "imageFilename": "",
+      "promptSolution": ""
+    }
+  ]
+}
