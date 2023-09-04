@@ -9,6 +9,7 @@ class InGameScreen {
         // UI Components
         this.backgroundImage;
         this.promptInput;
+        this.nextButton = new Button();
     }
 
 
@@ -17,7 +18,19 @@ class InGameScreen {
     }
 
     setup() {
-        this.promptInput = createInput("");
+        this.promptInput = createInput("").attribute("placeholder", "Write your command and press Enter when ready");
+        this.promptInput.size(500, 40);
+        this.nextButton.assign(900,
+            720,
+            100,
+            50,
+            10,
+            10,
+            10,
+            10,
+            "Next",
+            color(0, 255, 0));
+        this.nextButton.draw();
     }
 
     draw() {
@@ -56,24 +69,54 @@ class InGameScreen {
         // Prompt or next button
         fill("#364544");
         rect(0, 20 +  backInterfaceHeight * 3.8 / 6, backInterfaceWidth * 4.7 / 6, backInterfaceHeight * 0.6 / 6, 20);
+        pop();
 
         // Check if there is a level loaded. We need to avoid null objects
-        if(level) {
-            switch(level.getCurrentState().displayPrompt) {
+        if (this.level != null) {
+            textSize(20);
+            text(this.level.getCurrentStage().displayMessage, 700, 380)
+            switch(this.level.getCurrentStage().displayPrompt) {
                 case true:
-                this.promptInput.position(0, 20 +  backInterfaceHeight * 3.8 / 6);
+                    this.promptInput.show();
+                    this.promptInput.position(500, 20 +  backInterfaceHeight * 3.8 / 6);
+                    break;
                 case false:
-                    // TODO add button
+                    this.promptInput.hide();
+                    this.nextButton.draw();
+                    break;
             }
         }
-        pop();
     }
 
     enableControls() {
-    this.promptInput.show();
+        this.promptInput.show();
     }
 
     destroyUI() {
-    this.promptInput.hide();
+        this.promptInput.hide();
+    }
+    buttonCheck(mouseX, mouseY) {
+        if(mouseX > this.nextButton.posX && mouseX < this.nextButton.posX + this.nextButton.w &&
+            mouseY > this.nextButton.posY && mouseY < this.nextButton.posY + this.nextButton.h) {
+            // Advance to next stage
+            this.level.nextStage();
+            if (this.level.isLevelFinished()) {
+                this.level = null;
+            }
+        }
+        return null;
+    }
+
+    // Level Methods
+    setLevel(level) {
+        this.level = level;
+    }
+
+    submitAnswer() {
+        this.level.submitAnswer(this.promptInput.value());
+        if (this.level.isLevelFinished()) {
+            this.level = null;
+            alert("Level finished! Progressing to the next level.")
+        }
     }
 }
