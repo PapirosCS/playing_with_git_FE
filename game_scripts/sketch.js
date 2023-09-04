@@ -112,11 +112,9 @@ function keyPressed() {
 
 function mousePressed(){
     let buttonClicked;
-
     if (gameController.getCurrentState() == "IN_GAME") {
        buttonClicked = inGameScreen.buttonCheck(mouseX, mouseY);
     }
-
     if (gameController.getCurrentState() == "LOGIN_SCREEN"){
         buttonClicked = loginScreen.buttonCheck(mouseX, mouseY);
     }
