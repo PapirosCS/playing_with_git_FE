@@ -18,7 +18,6 @@ class LoginScreen {
     setup() {
         this.emailInput = createInput("");
         this.emailInput.addClass("input", "email");
-        this.emailInput.center();
         this.emailInput.size(300, 22);
         this.passwordInput = createInput("", "password");
         this.passwordInput.addClass("input");
@@ -72,11 +71,19 @@ class LoginScreen {
     buttonCheck(mouseX, mouseY){
         if(mouseX > this.loginButton.posX && mouseX < this.loginButton.posX + this.loginButton.w &&
             mouseY > this.loginButton.posY && mouseY < this.loginButton.posY + this.loginButton.h){
-                return "login";
+                const email = this.emailInput.value();
+                const password = this.passwordInput.value();
+                return {
+                    type: "login",
+                    email: email,
+                    password: password,
+                };
         }
         if(mouseX > this.registerButton.posX && mouseX < this.registerButton.posX + this.registerButton.w &&
             mouseY > this.registerButton.posY && mouseY < this.registerButton.posY + this.registerButton.h){
-                return "register";
+                return {
+                    type: "register",
+                };
         }
         return null;
     }

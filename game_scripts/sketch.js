@@ -3,16 +3,19 @@ let h = window.innerHeight;
 let gameController;
 let loginScreen;
 let inGameScreen;
+let registerScreen;
 let DEBUG_MODE;
 
 function preload(){
     gameController = new GameController();
     loginScreen = new LoginScreen(gameController);
     inGameScreen = new InGameScreen(null, null);
+    registerScreen = new RegisterScreen();
 
     // Preload Assets
     loginScreen.preload();
     inGameScreen.preload();
+    registerScreen.preload();
 }
 
 function setup() {
@@ -21,6 +24,8 @@ function setup() {
     // Setup Elements
     loginScreen.setup();
     inGameScreen.setup();
+    
+
 
     window.onresize = function() {
         // assigns new values for width and height variables
@@ -45,12 +50,14 @@ function draw() {
         case "IN_GAME":
             inGameScreen.draw();
             break;
+        case "REGISTER_SCREEN":
+            registerScreen.draw();
+            break;
     }
 }
 
 function keyPressed() {
     // Keys for changing game states while in debug mode
-
     if (gameController.getCurrentState() === "IN_GAME") {
         // If ENTER
         if (keyCode === 13) {
@@ -111,19 +118,30 @@ function keyPressed() {
 }
 
 function mousePressed(){
-    let buttonClicked;
     if (gameController.getCurrentState() == "IN_GAME") {
-       buttonClicked = inGameScreen.buttonCheck(mouseX, mouseY);
+       const buttonClicked = inGameScreen.buttonCheck(mouseX, mouseY);
     }
     if (gameController.getCurrentState() == "LOGIN_SCREEN"){
-        buttonClicked = loginScreen.buttonCheck(mouseX, mouseY);
+        const buttonClicked = loginScreen.buttonCheck(mouseX, mouseY);
+        if (buttonClicked){
+            if (buttonClicked.type == "login"){
+                gameController.goToInGameScreen(loginScreen, inGameScreen);
+            }
+            else if (buttonClicked.type == "register"){
+                registerScreen.setup();
+                gameController.goToRegisterScreen(loginScreen, registerScreen);
+            }
+        }
+
     }
-    if (buttonClicked == "login"){
-        gameController.goToInGameScreen(loginScreen, inGameScreen);
-    }
-    else if (buttonClicked == "register"){
-        console.log("Register screen")
-        // toDo create a register page
+    if (gameController.getCurrentState() == "REGISTER_SCREEN"){
+        const buttonClicked = registerScreen.buttonCheck(mouseX, mouseY);
+        if (buttonClicked){
+            if (buttonClicked.type == "register"){
+                // todo verify information and add to database
+                gameController.goToLoginScreen(registerScreen, loginScreen);
+            }
+        }
     }
 }
 
