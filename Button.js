@@ -72,4 +72,12 @@ class Button {
         fill(0);
         text(this.text, this.posX + this.w / 2, this.posY + this.h / 2);
     }
+
+    assignTag(tag) {
+        this.tag = tag;
+    }
+
+    retrieveTag() {
+        return this.tag ? this.tag : null;
+    }
 }
