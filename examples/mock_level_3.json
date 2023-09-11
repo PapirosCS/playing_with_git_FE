@@ -1,0 +1,48 @@
+{
+    "index": "3",
+    "name": "Level_3",
+    "stages": [
+      {
+        "displayMessage": "How do you check the change history of the origin?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": ""
+      },
+      {
+        "displayMessage": "How do you check the status of your current repository?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git status"
+      },
+      {
+        "displayMessage": "How do you check the repository log?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git log origin/master"
+      },
+      {
+        "displayMessage": "How do you check differences between the origin and the master branch?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git diff origin/master"
+      },
+      {
+        "displayMessage": "How do you check differences between the origin and the master branch?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git merge origin/master"
+      },
+      {
+        "displayMessage": "How do you combine git fetch and git merge into one git command?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git pull"
+      },
+      {
+        "displayMessage": "You completed the level. Click 'Next' to continue",
+        "displayPrompt": false,
+        "imageFilename": "",
+        "promptSolution": ""
+      }
+    ]
+  }
