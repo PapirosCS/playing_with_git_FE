@@ -1,0 +1,54 @@
+{
+    "index": "7",
+    "name": "Level_7",
+    "stages": [
+      {
+        "displayMessage": "How do you move the head up one commit on main?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git checkout main^"
+      },
+      {
+        "displayMessage": "How do you move the head up 20 commits on main?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git checkout main~20"
+      },
+      {
+        "displayMessage": "How do you display a list of all the precious commits and their hashes",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git log"
+      },
+      {
+        "displayMessage": "How do you roll your repository back to the commit 5ae1?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git reset 5ae1"
+      },
+      {
+        "displayMessage": "How to you roll your repository back to the commit 5ae1?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git revert a6e4"
+      },
+      {
+        "displayMessage": "How do you move the head up one commit on main, 10 commits on main, check the commit history, and then reset to a commit, and revert to a commit",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": [
+            "git head^",
+            "git head~10",
+            "git log",
+            "git reset <hash>",
+            "git revert <hash>"
+        ]
+      },
+      {
+        "displayMessage": "You completed the level. Click 'Next' to continue",
+        "displayPrompt": false,
+        "imageFilename": "",
+        "promptSolution": ""
+      }
+    ]
+  }

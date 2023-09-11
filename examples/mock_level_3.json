@@ -6,7 +6,7 @@
         "displayMessage": "How do you check the change history of the origin?",
         "displayPrompt": true,
         "imageFilename": "",
-        "promptSolution": ""
+        "promptSolution": "git fetch origin"
       },
       {
         "displayMessage": "How do you check the status of your current repository?",
@@ -37,6 +37,18 @@
         "displayPrompt": true,
         "imageFilename": "",
         "promptSolution": "git pull"
+      },
+      {
+        "displayMessage": "How do you fetch the changes on a repository, check the status of your repository, check the log, then check the differences. Finally merge the origin and the master branches.",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": [
+            "git fetch origin",
+            "git status",
+            "git log origin/master",
+            "git diff origin/master",
+            "git merge origin/master"
+        ]
       },
       {
         "displayMessage": "You completed the level. Click 'Next' to continue",
