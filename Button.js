@@ -30,9 +30,12 @@ class Button {
 
         // Color of the button
         this.colour;
+
+        //
+        this.tag;
     }
 
-    assign (x, y, w, h, tl, tr, br, bl, text, colour){
+    assign (x, y, w, h, tl, tr, br, bl, text, colour, textSize = 20){
         //  x-coordinate of the rectangle.
         this.posX = x;
 
@@ -62,19 +65,26 @@ class Button {
 
         // Color of the button
         this.colour = colour;
+
+        this.textSize = textSize;
     }
 
     draw() {
         fill(this.colour);
         rect(this.posX, this.posY, this.w, this.h, this.tl, this.tr, this.br, this.bl);
         textAlign(CENTER, CENTER);
-        textSize(20);
+        textSize(this.textSize);
         fill(0);
         text(this.text, this.posX + this.w / 2, this.posY + this.h / 2);
     }
 
-    assignTag(tag) {
-        this.tag = tag;
+    assignTag(tagA, tagB = null) {
+
+        if (tagB === null){
+            this.tag = tagA;
+            return;
+        }
+        this.tag = [tagA, tagB];
     }
 
     retrieveTag() {

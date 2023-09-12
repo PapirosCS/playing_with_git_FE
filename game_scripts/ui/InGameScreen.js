@@ -33,6 +33,9 @@ class InGameScreen {
         this.buttons = [this.nextButton, this.documentationButton, this.w3schools, this.howToPlayButton,
             this.aboutTheGameButton, this.teamButton, this.usefulCommandsButton, this.contactButton,
             this.selectLevelButton, this.exitButton];
+
+        this.levelSelectActivated = false;
+        this.levelSelectMenu = new LevelSelect();
     }
 
 
@@ -44,6 +47,8 @@ class InGameScreen {
     setup() {
         this.promptInput = createInput("").attribute("placeholder", "Write your command and press Enter when ready");
         this.promptInput.size(500, 40);
+        this.levelSelectMenu.assign();
+        this.levelSelectMenu.buttonSetup();
     }
 
     draw() {
@@ -239,6 +244,10 @@ class InGameScreen {
                     break;
             }
         }
+
+        if (this.levelSelectActivated === true){
+            this.levelSelectMenu.draw();
+        }
     }
 
     enableControls() {
@@ -250,45 +259,56 @@ class InGameScreen {
     }
 
     buttonCheck(mouseX, mouseY) {
-        for(let i = 0; i < this.buttons.length; i++) {
-            if(mouseX > this.buttons[i].posX && mouseX < this.buttons[i].posX + this.buttons[i].w &&
-                mouseY > this.buttons[i].posY && mouseY < this.buttons[i].posY + this.buttons[i].h) {
-
-                switch (this.buttons[i].retrieveTag()) {
-                    case 'next':
-                        // If next button is disabled
-                        if (this.level.getCurrentStage().displayPrompt) return;
-                        // Advance to next stage
-                        this.level.nextStage();
-                        if (this.level.isLevelFinished()) {
-                            this.level = null;
-                        }
-                        break;
-                    case 'documentation':
-                        // Open GIT official documentation
-                        window.open('https://git-scm.com/doc', '_blank').focus();
-                        break;
-                    case 'w3schools':
-                        // Open W3Schools tutorial
-                        window.open('https://www.w3schools.com/git/', '_blank').focus();
-                        break;
-                    case 'howToPlay':
-                        alert("Follow the storyline and enter the Git commands requested. Remember to use single quotes for strings (').");
-                        break;
-                    case 'about':
-                        alert("Game created for the Agile Software Projects module from University of London.");
-                        break;
-                    case 'team':
-                        alert("Created by Wai Lee, Zoheir Benetebbiche, Victor Gonzalez, Pablo Cabezas and Tim Wong.");
-                        break;
-                    case 'usefulCommands':
-                        alert("git help, git commit -m 'message', git push, git log, git pull, git clone.");
-                        break;
-                    case 'contact':
-                        alert("Please email us at contact_email@playingwithgit.com");
-                        break;
+        if (this.levelSelectActivated === false){
+            for(let i = 0; i < this.buttons.length; i++) {
+                if(mouseX > this.buttons[i].posX && mouseX < this.buttons[i].posX + this.buttons[i].w &&
+                    mouseY > this.buttons[i].posY && mouseY < this.buttons[i].posY + this.buttons[i].h) {
+    
+                    switch (this.buttons[i].retrieveTag()) {
+                        case 'next':
+                            // If next button is disabled
+                            if (this.level.getCurrentStage().displayPrompt) return;
+                            // Advance to next stage
+                            this.level.nextStage();
+                            if (this.level.isLevelFinished()) {
+                                this.level = null;
+                            }
+                            break;
+                        case 'documentation':
+                            // Open GIT official documentation
+                            window.open('https://git-scm.com/doc', '_blank').focus();
+                            break;
+                        case 'w3schools':
+                            // Open W3Schools tutorial
+                            window.open('https://www.w3schools.com/git/', '_blank').focus();
+                            break;
+                        case 'howToPlay':
+                            alert("Follow the storyline and enter the Git commands requested. Remember to use single quotes for strings (').");
+                            break;
+                        case 'about':
+                            alert("Game created for the Agile Software Projects module from University of London.");
+                            break;
+                        case 'team':
+                            alert("Created by Wai Lee, Zoheir Benetebbiche, Victor Gonzalez, Pablo Cabezas and Tim Wong.");
+                            break;
+                        case 'usefulCommands':
+                            alert("git help, git commit -m 'message', git push, git log, git pull, git clone.");
+                            break;
+                        case 'contact':
+                            alert("Please email us at contact_email@playingwithgit.com");
+                            break;
+                        case 'selectLevel':
+                            this.levelSelectActivated = true;
+                            break;
+                    }
                 }
             }
+            return null;
+        }
+        const level = this.levelSelectMenu.buttonCheck(mouseX, mouseY);
+        if (level){
+            // TODO level contains coordinates to the level in a 2d array, need to set the level here.
+            this.levelSelectActivated = false;
         }
         return null;
     }
