@@ -1,0 +1,48 @@
+{
+    "index": "6",
+    "name": "Level_6",
+    "stages": [
+      {
+        "displayMessage": "How do we switch our working branch to the master branch?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git checkout master"
+      },
+      {
+        "displayMessage": "How do we check available branches?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git branch"
+      },
+      {
+        "displayMessage": "How do you merge a branch to the current working branch?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git merge newGuysWork"
+      },
+      {
+        "displayMessage": "How do you remove the branch called “newGuysBranch”?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git branch -d newGuysBranch"
+      },
+      {
+        "displayMessage": "How do you switch to the “johnsNewFeature” branch, commit your changes, then back to the master branch, then merge the branch, delete it, and commit your changes again?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": [
+            "git checkout johnsNewFeature",
+            "git commit -am \"<message>\"",
+            "git checkout master",
+            "git merge johnsNewFeature",
+            "git branch -d johnsNewFeature"
+        ]
+      },
+      {
+        "displayMessage": "You completed the level. Click 'Next' to continue",
+        "displayPrompt": false,
+        "imageFilename": "",
+        "promptSolution": ""
+      }
+    ]
+  }

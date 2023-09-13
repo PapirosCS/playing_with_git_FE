@@ -1,0 +1,55 @@
+{
+    "index": "2",
+    "name": "Level_2",
+    "stages": [
+      {
+        "displayMessage": "How do you check if a file has been added and is being tracked by the repo?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git status"
+      },
+      {
+        "displayMessage": "How do you add a file names “index.html” to the repository?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git add index.html"
+      },
+      {
+        "displayMessage": "How do you make a Git commit with the message “index.html added to repository”?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git commit –m “index.html added to repository”"
+      },
+      {
+        "displayMessage": "How do you make a folder into a repo on github using John’s repo address",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git remote add origin https://github.com/johnthegreatestprogrammer/repoforthenewloser.git"
+      },
+      {
+        "displayMessage": "How do you make the initial push to a repo?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git push –set-upstream origin master"
+      },
+      {
+        "displayMessage": "How do you create add a file to a repo, then push it to a new github repo address?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": [
+            "git status",
+            "git add loser.html",
+            "git commit –m “Any message”",
+            "git remote add origin",
+            "https://github.com/johnthegreatestprogrammer/imdoingjohnsworkforhim.git",
+            "git push –set-upstream origin master"
+        ]
+      },
+      {
+        "displayMessage": "You completed the level. Click 'Next' to continue",
+        "displayPrompt": false,
+        "imageFilename": "",
+        "promptSolution": ""
+      }
+    ]
+  }

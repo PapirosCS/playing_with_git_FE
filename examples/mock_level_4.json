@@ -1,0 +1,47 @@
+{
+    "index": "4",
+    "name": "Level_4",
+    "stages": [
+      {
+        "displayMessage": "How to add all the files in the folder to the repository?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git add -A"
+      },
+      {
+        "displayMessage": "How do you make a commit using all the files that you have made changes too?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git commit -am “<any message>”"
+      },
+      {
+        "displayMessage": "How do you check your status?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git status"
+      },
+      {
+        "displayMessage": "How do you push to your repository?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git push || git push origin"
+      },
+      {
+        "displayMessage": "How do you add all the files, make a commit, check your status and push to the repository?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": [
+            "git add -A",
+            "git commit -am “<any message>”",
+            "git status",
+            "git push"
+        ]
+      },
+      {
+        "displayMessage": "You completed the level. Click 'Next' to continue",
+        "displayPrompt": false,
+        "imageFilename": "",
+        "promptSolution": ""
+      }
+    ]
+  }
