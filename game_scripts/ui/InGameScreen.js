@@ -222,12 +222,12 @@ class InGameScreen {
             textSize(20);
             text(this.level.getCurrentStage().displayMessage, width/2, currentY - backInterfaceHeight * 3.8 / 6)
             switch(this.level.getCurrentStage().displayPrompt) {
-                case true:
+                case "true":
                     this.promptInput.size(backInterfaceWidth * 4.5 / 6)
                     this.promptInput.show();
                     this.promptInput.position(currentX, currentY);
                     break;
-                case false:
+                case "false":
                     this.promptInput.hide();
                     this.nextButton.assign(
                         currentX,
@@ -267,7 +267,7 @@ class InGameScreen {
                     switch (this.buttons[i].retrieveTag()) {
                         case 'next':
                             // If next button is disabled
-                            if (this.level.getCurrentStage().displayPrompt) return;
+                            if (this.level.getCurrentStage().displayPrompt === "true") return;
                             // Advance to next stage
                             this.level.nextStage();
                             if (this.level.isLevelFinished()) {

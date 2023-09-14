@@ -67,50 +67,12 @@ function keyPressed() {
 
     if (!DEBUG_MODE) { return; }
     if (keyCode === LEFT_ARROW) {
-        const mockLevelJSON = JSON.parse("{\n" +
-            "  \"index\": \"1\",\n" +
-            "  \"name\": \"Tutorial\",\n" +
-            "  \"stages\": [\n" +
-            "    {\n" +
-            "      \"displayMessage\": \"Welcome to Playing with Git!\",\n" +
-            "      \"displayPrompt\": false,\n" +
-            "      \"imageFilename\": \"\",\n" +
-            "      \"promptSolution\": \"\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"displayMessage\": \"Please enter the command 'git help'\",\n" +
-            "      \"displayPrompt\": true,\n" +
-            "      \"imageFilename\": \"\",\n" +
-            "      \"promptSolution\": \"git help\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"displayMessage\": \"Great! Now please make a commit with a comment 'hello world' (Use single quotation marks)\",\n" +
-            "      \"displayPrompt\": true,\n" +
-            "      \"imageFilename\": \"\",\n" +
-            "      \"promptSolution\": \"git commit -m 'hello world'\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"displayMessage\": \"This is a stage without prompt, just click 'Next'\",\n" +
-            "      \"displayPrompt\": false,\n" +
-            "      \"imageFilename\": \"\",\n" +
-            "      \"promptSolution\": \"\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"displayMessage\": \"End this level by pushing to the remote repository\",\n" +
-            "      \"displayPrompt\": true,\n" +
-            "      \"imageFilename\": \"\",\n" +
-            "      \"promptSolution\": \"git push\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"displayMessage\": \"You completed the level. Click 'Next' to continue\",\n" +
-            "      \"displayPrompt\": false,\n" +
-            "      \"imageFilename\": \"\",\n" +
-            "      \"promptSolution\": \"\"\n" +
-            "    }\n" +
-            "  ]\n" +
-            "}");
-        inGameScreen.setLevel(new Level(mockLevelJSON));
-        gameController.goToInGameScreen(loginScreen, inGameScreen);
+        gameController.getLevel(1).then((r) => {
+            const APILevel = r["level"];
+            const level = new Level(APILevel)
+            inGameScreen.setLevel(level);
+            gameController.goToInGameScreen(loginScreen, inGameScreen);
+        })
     }
     else if (keyCode === RIGHT_ARROW) {
         gameController.goToLoginScreen(inGameScreen, loginScreen);
