@@ -8,6 +8,7 @@ class LoginScreen {
         this.passwordInput;
         this.loginButton = new Button();
         this.registerButton = new Button();
+        this.playButton = new Button();
     }
 
     preload() {
@@ -37,6 +38,7 @@ class LoginScreen {
         textSize(30);
         const rowHeight = boxHeight/20
         text("PLAYING WITH GIT", width/2, boxY + rowHeight * 6);
+        /*  OLD LOGIN SYSTEM
         textAlign(LEFT, BOTTOM);
         textSize(10);
         text(" Your Email:", width / 2 - (this.emailInput.width/2), boxY + rowHeight * 8 );
@@ -66,6 +68,20 @@ class LoginScreen {
                                         "Create a new account",
                                         color(255, 0, 0));
         this.registerButton.draw();
+        */
+
+        this.playButton.assign((width/2) - 150,
+            boxY + rowHeight * 12,
+            300,
+            80,
+            10,
+            10,
+            10,
+            10,
+            "PLAY",
+            color(0, 255, 0));
+        this.playButton.draw();
+
     }
 
     buttonCheck(mouseX, mouseY){
@@ -84,6 +100,12 @@ class LoginScreen {
                 return {
                     type: "register",
                 };
+        }
+        if(mouseX > this.playButton.posX && mouseX < this.playButton.posX + this.playButton.w &&
+            mouseY > this.playButton.posY && mouseY < this.playButton.posY + this.playButton.h){
+            return {
+                type: "play",
+            };
         }
         return null;
     }

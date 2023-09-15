@@ -4,7 +4,7 @@ let gameController;
 let loginScreen;
 let inGameScreen;
 let registerScreen;
-let DEBUG_MODE;
+let DEBUG_MODE = false;
 
 function preload(){
     gameController = new GameController();
@@ -65,7 +65,7 @@ function keyPressed() {
         }
     }
 
-    if (!DEBUG_MODE) { return; }
+    if (!DEBUG_MODE) { return; } // Testing purposes, disabled on production
     if (keyCode === LEFT_ARROW) {
         gameController.getLevel(1).then((r) => {
             const APILevel = r["level"];
@@ -92,6 +92,14 @@ function mousePressed(){
             else if (buttonClicked.type == "register"){
                 registerScreen.setup();
                 gameController.goToRegisterScreen(loginScreen, registerScreen);
+            }
+            else if (buttonClicked.type == "play"){
+                gameController.getLevel(1).then((r) => {
+                    const APILevel = r["level"];
+                    const level = new Level(APILevel)
+                    inGameScreen.setLevel(level);
+                    gameController.goToInGameScreen(loginScreen, inGameScreen);
+                })
             }
         }
 
