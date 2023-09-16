@@ -35,7 +35,7 @@ class InGameScreen {
             this.selectLevelButton, this.exitButton];
 
         this.levelSelectActivated = false;
-        this.levelSelectMenu = new LevelSelect();
+        this.levelSelectMenu = new LevelSelect([...Array(8)].map(e => Array(6)));
     }
 
 
@@ -80,7 +80,7 @@ class InGameScreen {
         stroke(0);
         strokeWeight(3);
         fill(255);
-        text("Welcome back!", currentX + 60 + (backInterfaceWidth / 24), currentY + 160);
+        text("Welcome back!", currentX + (backInterfaceWidth / 24), currentY + 140, backInterfaceWidth / 12, 100);
         noStroke();
 
         // Tutorials Menu
@@ -217,10 +217,10 @@ class InGameScreen {
 
         // Check if there is a level loaded. We need to avoid null objects
         if (this.level != null) {
+            textSize(20);
+            text(this.level.getCurrentStage().displayMessage, currentX, currentY, backInterfaceWidth * 4.7 / 6, backInterfaceHeight * 3.8 / 6)
             currentY += backInterfaceHeight * 3.9 / 6;
             currentX += 20;
-            textSize(20);
-            text(this.level.getCurrentStage().displayMessage, width/2, currentY - backInterfaceHeight * 3.8 / 6)
             switch(this.level.getCurrentStage().displayPrompt) {
                 case true:
                     this.promptInput.size(backInterfaceWidth * 4.5 / 6)
@@ -246,6 +246,7 @@ class InGameScreen {
         }
 
         if (this.levelSelectActivated === true){
+            this.promptInput.hide();
             this.levelSelectMenu.draw();
         }
     }
@@ -319,7 +320,9 @@ class InGameScreen {
     }
 
     submitAnswer() {
-        this.level.submitAnswer(this.promptInput.value());
+        if (this.level.submitAnswer(this.promptInput.value())){
+            this.promptInput.value("");
+        }
         if (this.level.isLevelFinished()) {
             this.level = null;
             alert("Level finished! Progressing to the next level.")

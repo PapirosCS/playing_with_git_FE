@@ -1,13 +1,13 @@
 class LevelSelect {
-    constructor(){
+    constructor(levelsJson){
         this.x;
         this.y;
         this.width;
         this.height;
         this.buttons = [];
-        for (let i = 0; i < 8; i++){
+        for (let i = 0; i < levelsJson.length; i++){
             const levelButtons = [];
-            for (let j = 0; j < 6; j++){
+            for (let j = 0; j < levelsJson[i].length; j++){
                 let button = new Button();
                 button.text = `Stage ${j}`;
                 levelButtons.push(button);
