@@ -222,12 +222,12 @@ class InGameScreen {
             currentY += backInterfaceHeight * 3.9 / 6;
             currentX += 20;
             switch(this.level.getCurrentStage().displayPrompt) {
-                case true:
+                case "true":
                     this.promptInput.size(backInterfaceWidth * 4.5 / 6)
                     this.promptInput.show();
                     this.promptInput.position(currentX, currentY);
                     break;
-                case false:
+                case "false":
                     this.promptInput.hide();
                     this.nextButton.assign(
                         currentX,
@@ -268,7 +268,7 @@ class InGameScreen {
                     switch (this.buttons[i].retrieveTag()) {
                         case 'next':
                             // If next button is disabled
-                            if (this.level.getCurrentStage().displayPrompt) return;
+                            if (this.level.getCurrentStage().displayPrompt === "true") return;
                             // Advance to next stage
                             this.level.nextStage();
                             if (this.level.isLevelFinished()) {
@@ -306,10 +306,16 @@ class InGameScreen {
             }
             return null;
         }
-        const level = this.levelSelectMenu.buttonCheck(mouseX, mouseY);
-        if (level){
+        const level_indexes = this.levelSelectMenu.buttonCheck(mouseX, mouseY);
+        if (level_indexes && this.levelSelectActivated){
             // TODO level contains coordinates to the level in a 2d array, need to set the level here.
             this.levelSelectActivated = false;
+            gameController.getLevel(level_indexes[0] + 1).then((r) => {
+                const APILevel = r["level"];
+                const level = new Level(APILevel)
+                this.setLevel(level);
+                this.level.currentStageIndex = level_indexes[1];
+            })
         }
         return null;
     }

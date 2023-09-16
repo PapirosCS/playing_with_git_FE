@@ -1,0 +1,30 @@
+{
+    "index": "8",
+    "name": "Level_8",
+    "stages": [
+      {
+        "displayMessage": "How do you check information on previous commits",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git log"
+      },
+      {
+        "displayMessage": "How do you check the files in the current directory?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "ls"
+      },
+      {
+        "displayMessage": "How do you check the last person to edit each line in the file newGuysWork.js",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git blame newGuysWork.js"
+      },
+      {
+        "displayMessage": "Well, new guy. I hope your first few days have been interesting! You’ve learned some new things about Git, navigated some office politics and got that Arsehole John fired. Welcome to PWG corp!",
+        "displayPrompt": false,
+        "imageFilename": "",
+        "promptSolution": ""
+      }
+    ]
+  }

@@ -1,0 +1,53 @@
+{
+    "index": "5",
+    "name": "Level_5",
+    "stages": [
+      {
+        "displayMessage": "How do you check what branches a git repository has?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git branch -a"
+      },
+      {
+        "displayMessage": "How do you remove a branch named “thisJobSucks” from the remote repository?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git branch -d thisJobSucks"
+      },
+      {
+        "displayMessage": "How do you make a new branch called servant?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git branch servant"
+      },
+      {
+        "displayMessage": "How do you switch to a branch called servant?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git checkout servant"
+      },
+      {
+        "displayMessage": "How do create a new branch and switch to it in one command?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": "git checkout -b <newbranchname>"
+      },
+      {
+        "displayMessage": "How do you make a check the repository branches, delete the servant branch, make a new branch called  “johnsNewFeature” and then move to it?",
+        "displayPrompt": true,
+        "imageFilename": "",
+        "promptSolution": [
+            "git branch -a",
+            "git branch -d servant",
+            "git branch johnsNewFeature",
+            "git checkout johnsNewFeature"
+        ]
+      },
+      {
+        "displayMessage": "You completed the level. Click 'Next' to continue",
+        "displayPrompt": false,
+        "imageFilename": "",
+        "promptSolution": ""
+      }
+    ]
+  }
