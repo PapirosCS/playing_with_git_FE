@@ -89,6 +89,7 @@ class InGameScreen {
         stroke(0);
         strokeWeight(3);
         fill(255);
+        textAlign(CENTER);
         text("Welcome back!", currentX + (backInterfaceWidth / 24), currentY + 140, backInterfaceWidth / 12, 100);
         noStroke();
 
