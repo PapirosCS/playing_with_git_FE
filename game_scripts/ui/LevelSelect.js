@@ -25,13 +25,23 @@ class LevelSelect {
 
     buttonSetup(){
         const buttonHeight = this.height / ((this.buttons.length + 1) * 2);
-        const buttonWidth = this.width / ((this.buttons[0].length + 1) * 1.2);
+        const buttonWidth = this.width / ((this.buttons[0].length + 1) * 1.2) - 20;
         for (let i = 0; i < this.buttons.length; i++){
             for (let j = 0; j < this.buttons[i].length; j++){
                 let stage = `Stage ${j + 1}`;
-                if (j + 1 == this.buttons[i].length){
-                    stage = "Review Stage";
+                if(i == 2 || i == 4){
+                    if (j + 2 == this.buttons[i].length){
+                        stage = "Review Stage";
+                    }
+                    if (j + 1 == this.buttons[i].length){
+                        stage = "Bonus Stage";
+                    }
+                } else {
+                    if (j + 1 == this.buttons[i].length){
+                        stage = "Review Stage";
+                    }
                 }
+
                 this.buttons[i][j].assign(
                     this.x + (buttonWidth * j * 1.2) + (buttonWidth * 0.2),
                     this.y + (buttonHeight * 2) + (buttonHeight * (i * 2)),
