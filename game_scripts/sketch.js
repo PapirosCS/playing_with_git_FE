@@ -18,6 +18,12 @@ function preload(){
     loginScreen.preload();
     inGameScreen.preload();
     registerScreen.preload();
+
+    gameController.getLevel(1).then((r) => {
+        const APILevel = r["level"];
+        const level = new Level(APILevel)
+        inGameScreen.setLevel(level);
+    })
 }
 
 function setup() {
@@ -94,12 +100,7 @@ function mousePressed(){
                 gameController.goToRegisterScreen(loginScreen, registerScreen);
             }
             else if (buttonClicked.type == "play"){
-                gameController.getLevel(1).then((r) => {
-                    const APILevel = r["level"];
-                    const level = new Level(APILevel)
-                    inGameScreen.setLevel(level);
-                    gameController.goToInGameScreen(loginScreen, inGameScreen);
-                })
+                gameController.goToInGameScreen(loginScreen, inGameScreen);
             }
         }
 
