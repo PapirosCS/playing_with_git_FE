@@ -23,6 +23,8 @@ class LoginScreen {
         this.passwordInput = createInput("", "password");
         this.passwordInput.addClass("input");
         this.passwordInput.size(300, 22);
+        this.emailInput.hide();
+        this.passwordInput.hide();
     }
 
     draw() {

@@ -55,13 +55,13 @@ class InGameScreen {
 
     setup() {
         this.promptInput = createInput("").attribute("placeholder", "Write your command and press Enter when ready");
-        this.promptInput.size(500, 40);
+        this.promptInput.hide();
         this.levelSelectMenu.assign();
         this.levelSelectMenu.buttonSetup();
     }
 
     draw() {
-
+        this.promptInput.size(500, 40);
         // Cords
         let currentX = 120;
         let currentY = 60;
@@ -311,6 +311,9 @@ class InGameScreen {
                         case 'selectLevel':
                             this.levelSelectActivated = true;
                             break;
+                        case 'exit':
+                            gameController.goToLoginScreen(inGameScreen, loginScreen);
+
                     }
                 }
             }

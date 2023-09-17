@@ -58,7 +58,6 @@ class LevelSelect {
                 this.buttons[i][j].assignTag(i, j);
             }
         }
-        console.log(this.buttons);
     }
 
     draw(){
