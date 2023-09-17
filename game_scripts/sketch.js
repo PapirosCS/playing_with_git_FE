@@ -4,6 +4,8 @@ let gameController;
 let loginScreen;
 let inGameScreen;
 let registerScreen;
+
+// Debug mode is only for development
 let DEBUG_MODE = false;
 
 function preload(){
@@ -34,8 +36,6 @@ function setup() {
         resizeCanvas(w, h);
     }
 
-    // Debug mode is only for development
-    DEBUG_MODE = true;
 }
 
 function draw() {
