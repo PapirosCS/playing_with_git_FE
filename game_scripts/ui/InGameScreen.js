@@ -35,7 +35,16 @@ class InGameScreen {
             this.selectLevelButton, this.exitButton];
 
         this.levelSelectActivated = false;
-        this.levelSelectMenu = new LevelSelect([...Array(8)].map(e => Array(6)));
+        const levels = [];
+        levels.push([...Array(6)])
+        levels.push([...Array(6)])
+        levels.push([...Array(7)])
+        levels.push([...Array(5)])
+        levels.push([...Array(7)])
+        levels.push([...Array(6)])
+        levels.push([...Array(6)])
+        levels.push([...Array(5)])
+        this.levelSelectMenu = new LevelSelect(levels);
     }
 
 
@@ -218,6 +227,7 @@ class InGameScreen {
         // Check if there is a level loaded. We need to avoid null objects
         if (this.level != null) {
             textSize(20);
+            textAlign(LEFT);
             text(this.level.getCurrentStage().displayMessage, currentX, currentY, backInterfaceWidth * 4.7 / 6, backInterfaceHeight * 3.8 / 6)
             currentY += backInterfaceHeight * 3.9 / 6;
             currentX += 20;
@@ -330,8 +340,15 @@ class InGameScreen {
             this.promptInput.value("");
         }
         if (this.level.isLevelFinished()) {
+            const nextLevel = this.level.index + 1
             this.level = null;
             alert("Level finished! Progressing to the next level.")
+            gameController.getLevel(nextLevel).then((r) => {
+                const APILevel = r["level"];
+                const level = new Level(APILevel)
+                this.setLevel(level);
+                level.currentStageIndex = 0;
+            })
         }
     }
 }
